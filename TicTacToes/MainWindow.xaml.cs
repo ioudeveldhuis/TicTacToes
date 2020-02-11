@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TicTacToes
 {
@@ -77,7 +68,6 @@ namespace TicTacToes
                     if (allElementsAreEqual)
                     {
                         MessageBox.Show($"Player {gameBoard[i, 0]} wins");
-                        moves = 9;
                         break;
                     }
                 }
@@ -95,8 +85,7 @@ namespace TicTacToes
 
                         if (allElementsAreEqual)
                         {
-                            MessageBox.Show($"Player {gameBoard[i, 0]} wins");
-                            moves = 9;
+                            MessageBox.Show($"Player {gameBoard[0, i]} wins");
                             break;
                         }
                     }
@@ -112,10 +101,7 @@ namespace TicTacToes
                     allElementsAreEqual = mylist.All(x => (x == mylist.First()));
 
                     if (allElementsAreEqual)
-                    {
                         MessageBox.Show($"Player {gameBoard[0, 0]} wins");
-                        moves = 9;
-                    }
                 }
 
                 // Diagonal check 2
@@ -128,14 +114,11 @@ namespace TicTacToes
                     allElementsAreEqual = mylist.All(x => (x == mylist.First()));
 
                     if (allElementsAreEqual)
-                    {
                         MessageBox.Show($"Player {gameBoard[0, 2]} wins");
-                        moves = 9;
-                    }
                 }
             }
 
-            if (moves == 9)
+            if (moves == 9 || allElementsAreEqual)
             {
                 if (allElementsAreEqual == false)
                     MessageBox.Show("DRAW");
