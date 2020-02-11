@@ -74,6 +74,24 @@ namespace TicTacToes
                     if (allElementsAreEqual)
                     {
                         MessageBox.Show($"Player {gameBoard[i, 0]} wins");
+                        moves = 9;
+                        break;
+                    }
+                }
+
+                // Check for win vertical
+                for (int i = 0; i < gameBoard.GetLength(0); i++)
+                {
+                    List<string> mylist = new List<string>();
+                    mylist.Add(gameBoard[0, i]);
+                    mylist.Add(gameBoard[1, i]);
+                    mylist.Add(gameBoard[2, i]);
+                    bool allElementsAreEqual = mylist.All(x => (x == mylist.First()));
+
+                    if (allElementsAreEqual)
+                    {
+                        MessageBox.Show($"Player {gameBoard[i, 0]} wins");
+                        moves = 9;
                         break;
                     }
                 }
