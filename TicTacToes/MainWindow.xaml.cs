@@ -83,51 +83,62 @@ namespace TicTacToes
                 }
 
                 // Check for win vertical
-                for (int i = 0; i < gameBoard.GetLength(0); i++)
+                if (allElementsAreEqual == false)
                 {
-                    mylist.Clear();
-                    mylist.Add(gameBoard[0, i]);
-                    mylist.Add(gameBoard[1, i]);
-                    mylist.Add(gameBoard[2, i]);
-                    allElementsAreEqual = mylist.All(x => (x == mylist.First()));
-
-                    if (allElementsAreEqual)
+                    for (int i = 0; i < gameBoard.GetLength(0); i++)
                     {
-                        MessageBox.Show($"Player {gameBoard[i, 0]} wins");
-                        moves = 9;
-                        break;
+                        mylist.Clear();
+                        mylist.Add(gameBoard[0, i]);
+                        mylist.Add(gameBoard[1, i]);
+                        mylist.Add(gameBoard[2, i]);
+                        allElementsAreEqual = mylist.All(x => (x == mylist.First()));
+
+                        if (allElementsAreEqual)
+                        {
+                            MessageBox.Show($"Player {gameBoard[i, 0]} wins");
+                            moves = 9;
+                            break;
+                        }
                     }
                 }
 
                 // Diagonal check 1
-                mylist.Clear();
-                mylist.Add(gameBoard[0, 0]);
-                mylist.Add(gameBoard[1, 1]);
-                mylist.Add(gameBoard[2, 2]);
-                allElementsAreEqual = mylist.All(x => (x == mylist.First()));
-
-                if (allElementsAreEqual)
+                if (allElementsAreEqual == false)
                 {
-                    MessageBox.Show($"Player {gameBoard[0, 0]} wins");
-                    moves = 9;
+                    mylist.Clear();
+                    mylist.Add(gameBoard[0, 0]);
+                    mylist.Add(gameBoard[1, 1]);
+                    mylist.Add(gameBoard[2, 2]);
+                    allElementsAreEqual = mylist.All(x => (x == mylist.First()));
+
+                    if (allElementsAreEqual)
+                    {
+                        MessageBox.Show($"Player {gameBoard[0, 0]} wins");
+                        moves = 9;
+                    }
                 }
 
                 // Diagonal check 2
-                mylist.Clear();
-                mylist.Add(gameBoard[0, 2]);
-                mylist.Add(gameBoard[1, 1]);
-                mylist.Add(gameBoard[2, 0]);
-                allElementsAreEqual = mylist.All(x => (x == mylist.First()));
-
-                if (allElementsAreEqual)
+                if (allElementsAreEqual == false)
                 {
-                    MessageBox.Show($"Player {gameBoard[0, 2]} wins");
-                    moves = 9;
+                    mylist.Clear();
+                    mylist.Add(gameBoard[0, 2]);
+                    mylist.Add(gameBoard[1, 1]);
+                    mylist.Add(gameBoard[2, 0]);
+                    allElementsAreEqual = mylist.All(x => (x == mylist.First()));
+
+                    if (allElementsAreEqual)
+                    {
+                        MessageBox.Show($"Player {gameBoard[0, 2]} wins");
+                        moves = 9;
+                    }
                 }
             }
 
             if (moves == 9)
             {
+                if (allElementsAreEqual == false)
+                    MessageBox.Show("DRAW");
                 MessageBox.Show("END");
                 Close();
             }
