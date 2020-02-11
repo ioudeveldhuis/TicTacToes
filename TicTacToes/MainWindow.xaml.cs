@@ -129,6 +129,7 @@ namespace TicTacToes
             if (moves == 9)
             {
                 MessageBox.Show("END");
+                Close();
             }
         }
     }
